@@ -1,17 +1,17 @@
 "use client";
 import "./globals.css";
 // import { Inter } from "next/font/google";
-import Header from "@/components/Header/index";
+import MenuHeader from "@/components/Header/index";
 import Image from "next/image";
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 
 // const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "JimGerace Blog JS",
-  description: "个人博客记录点滴~",
-};
+// export const metadata = {
+//   title: "JimGerace Blog JS",
+//   description: "个人博客记录点滴~",
+// };
 
 export default function RootLayout({ children }) {
   const [showBackTop, setShowBackTop] = useState(false);
@@ -30,10 +30,10 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <Toaster />
-        <Header changeBackTop={changeBackTop} />
+        <MenuHeader changeBackTop={changeBackTop} />
         <div className="relative w-full h-screen">{children}</div>
 
         <div
