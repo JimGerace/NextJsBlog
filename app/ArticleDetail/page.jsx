@@ -32,6 +32,8 @@ const ArticleDetail = () => {
             res.data[key] = formDate(res.data[key]);
           } else if (key === "sort") {
             res.data[key] = res.data[key].split(",");
+          } else if (key === "content") {
+            res.data[key] = "\n" + res.data[key];
           }
         }
 

@@ -239,7 +239,7 @@ export default function Header(prop) {
         }
       >
         <div
-          className="absolute cursor-pointer top-4 right-24 w-6 h-6"
+          className="absolute cursor-pointer top-4 right-14 w-6 h-6"
           onClick={toShowMenuDialog}
         >
           <Image src="/images/icon_del.png" alt="" layout="fill" />
