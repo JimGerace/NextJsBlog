@@ -1,0 +1,35 @@
+.loading_:first-child {
+  transform: translateX(0%);
+  animation: ball-newton-cradle-left 1s 0s ease-out infinite;
+}
+
+.loading_:last-child {
+  transform: translateX(0%);
+  animation: ball-newton-cradle-right 1s 0s ease-out infinite;
+}
+
+@keyframes ball-newton-cradle-left {
+  25% {
+    transform: translateX(-100%);
+    animation-timing-function: ease-in;
+  }
+
+  50% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes ball-newton-cradle-right {
+  50% {
+    transform: translateX(0%);
+  }
+
+  75% {
+    transform: translateX(100%);
+    animation-timing-function: ease-in;
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}

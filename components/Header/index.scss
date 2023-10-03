@@ -1,0 +1,13 @@
+.pc-input {
+  padding-bottom: 0.3rem !important;
+  border-bottom: 2px solid #eee;
+}
+
+.nav_active {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  background-color: hsla(0, 0%, 100%, 0.4);
+}
+
+.back_filter {
+  backdrop-filter: blur(8px);
+}

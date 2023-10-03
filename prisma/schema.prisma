@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model ArticleSort {
+  id       Int      @id @default(autoincrement())
+  name     String
+  createAt DateTime @default(now()) @map("create_at")
+  updateAt DateTime @default(now()) @map("update_at")
+
+  @@map("article_sort")
+}
+
+model ArticleList {
+  id       String   @id @default(cuid())
+  name     String
+  coverUrl String   @map("cover_url")
+  sort     String
+  createAt DateTime @default(now()) @map("create_at")
+  updateAt DateTime @default(now()) @map("update_at")
+  content  String   @db.Text
+  status   Boolean  @default(true)
+  yearly   Int      @default(2023)
+
+  @@map("article_list")
+}
+
+model user {
+  id        String   @id
+  username  String   @unique
+  password  String   @db.Text
+  create_at DateTime @default(now())
+  update_at DateTime @default(now())
+}
