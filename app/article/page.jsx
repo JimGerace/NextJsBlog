@@ -5,10 +5,10 @@ import Loading from "@/components/Loading";
 import { useEffect, useRef, useState } from "react";
 import { SortList, ArticleList } from "@/network";
 import { formDate } from "@/utils/tools";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 export default function Article() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const requestRef = useRef(true);
   const [showType, setShowType] = useState("");
@@ -113,11 +113,6 @@ export default function Article() {
     setPage(val);
   };
 
-  // 跳转到详情页面
-  const toDetailPage = (id) => {
-    router.push(`/articleDetail?id=${id}`);
-  };
-
   return (
     <div className="w-full h-full py-14">
       <div className="relative max-w-screen-xl h-full m-0-auto">
@@ -127,12 +122,12 @@ export default function Article() {
               {article.map((item, index) => {
                 return (
                   <div className="w-full pt-12 pb-4 border-b-1" key={index}>
-                    <span
-                      onClick={() => toDetailPage(item.id)}
+                    <Link
                       className="max-w-full inline-block overflow-hidden text-ellipsis whitespace-nowrap text-xl text-404040 cursor-pointer hover:text-primary"
+                      href={"/articleDetail?id=" + item.id}
                     >
                       {item.name}
-                    </span>
+                    </Link>
                     <div className="w-full flex items-center pt-8 justify-between">
                       <div className="w-3/4 flex items-center">
                         {item.sort.map((opt, optIndex) => {

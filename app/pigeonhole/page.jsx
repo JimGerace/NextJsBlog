@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import { ArticleList } from "@/network/index";
 import Loading from "@/components/Loading";
 import Empty from "@/components/Empty";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Pigeonhole = () => {
-  const router = useRouter();
   const [showType, setShowType] = useState("");
   const [archiveList, setArchiveList] = useState([]);
 
@@ -39,11 +38,6 @@ const Pigeonhole = () => {
         setShowType("noData");
       }
     });
-  };
-
-  // 跳转到详情页面
-  const toDetailPage = (id) => {
-    router.push(`/articleDetail?id=${id}`);
   };
 
   // 处理时间格式
@@ -81,8 +75,8 @@ const Pigeonhole = () => {
 
                 {item.list.map((opt, optIndex) => {
                   return (
-                    <div
-                      onClick={() => toDetailPage(opt.id)}
+                    <Link
+                      href={"/articleDetail?id=" + opt.id}
                       className="w-full flex items-center py-2 cursor-pointer transition-all duration-500 hover:text-primary hover:translate-x-4"
                       key={optIndex}
                     >
@@ -92,7 +86,7 @@ const Pigeonhole = () => {
                       <span className="text-base flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
                         {opt.name}
                       </span>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>

@@ -31,6 +31,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <title>JimGerace Blog JS</title>
+      <meta name="keywords" content="JimGerace, 博客" />
+      <meta description="JimGerace Blog" content="Blog" />
       <body>
         <Toaster />
         <MenuHeader changeBackTop={changeBackTop} />
