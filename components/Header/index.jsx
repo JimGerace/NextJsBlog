@@ -10,25 +10,25 @@ import toast from "react-hot-toast";
 const menu = [
   {
     label: "首页",
-    value: "/Home",
+    value: "/home",
     icon: "/images/icon_home_default.png",
     homeIcon: "/images/icon_home_f.png",
   },
   {
     label: "文章",
-    value: "/Article",
+    value: "/article",
     icon: "/images/icon_article_default.png",
     homeIcon: "/images/icon_article_f.png",
   },
   {
     label: "归档",
-    value: "/Pigeonhole",
+    value: "/pigeonhole",
     icon: "/images/icon_file_default.png",
     homeIcon: "/images/icon_file_f.png",
   },
   {
     label: "关于",
-    value: "/About",
+    value: "/about",
     icon: "/images/icon_about_default.png",
     homeIcon: "/images/icon_about_f.png",
   },
@@ -57,8 +57,6 @@ export default function Header(prop) {
       toShowMenuDialog();
     }
 
-    console.log("header");
-
     return () => {
       pageRef.value = null;
       navRef.value = null;
@@ -69,7 +67,7 @@ export default function Header(prop) {
   // 处理Menu的className
   const handleMenuClassName = (target) => {
     if (target === activeMenu) {
-      if (activeMenu === "/Home") {
+      if (activeMenu === "/home") {
         return "bg-menu-mask ";
       } else {
         return "bg-f2f2f2 ";
@@ -116,7 +114,7 @@ export default function Header(prop) {
       return;
     }
     window.sessionStorage.setItem("searchKey", value);
-    router.push(`/Article?n=${new Date().getTime()}`);
+    router.push(`/article?n=${new Date().getTime()}`);
     setTimeout(() => {
       e.target.value = "";
     }, 500);
@@ -126,14 +124,14 @@ export default function Header(prop) {
     <div className="fixed inset-0 h-14 z-30 nav_bar">
       <div
         className={
-          (activeMenu !== "/Home" ? "border-b-1 " : "") +
+          (activeMenu !== "/home" ? "border-b-1 " : "") +
           (showHomeIcon ? "" : "back_filter") +
           " w-full flex items-center justify-between h-14 px-2 bg-transparent sm:px-12 "
         }
       >
         <span
           className={
-            (activeMenu === "/Home" && showHomeIcon ? "text-white" : "") +
+            (activeMenu === "/home" && showHomeIcon ? "text-white" : "") +
             " text-xl font-bold cursor-pointer"
           }
         >
@@ -149,7 +147,7 @@ export default function Header(prop) {
                   key={index}
                   className={
                     handleMenuClassName(item.value) +
-                    (activeMenu === "/Home"
+                    (activeMenu === "/home"
                       ? "hover:bg-menu-mask"
                       : "hover:bg-f2f2f2") +
                     " cursor-pointer flex items-center py-1 px-3.5 mx-1 rounded-sm"
@@ -157,7 +155,7 @@ export default function Header(prop) {
                 >
                   <Image
                     src={
-                      activeMenu === "/Home" && showHomeIcon
+                      activeMenu === "/home" && showHomeIcon
                         ? item.homeIcon
                         : item.icon
                     }
@@ -167,7 +165,7 @@ export default function Header(prop) {
                   />
                   <span
                     className={
-                      (activeMenu === "/Home" && showHomeIcon
+                      (activeMenu === "/home" && showHomeIcon
                         ? "text-white"
                         : "") + " pl-1"
                     }
@@ -180,7 +178,7 @@ export default function Header(prop) {
 
             <span
               className={
-                (activeMenu === "/Home" && showHomeIcon ? "text-white" : "") +
+                (activeMenu === "/home" && showHomeIcon ? "text-white" : "") +
                 " mr-6 ml-2"
               }
             >
@@ -194,7 +192,7 @@ export default function Header(prop) {
               <Image
                 className="icon_search"
                 src={
-                  activeMenu === "/Home" && showHomeIcon
+                  activeMenu === "/home" && showHomeIcon
                     ? "/images/icon_search_f.png"
                     : "/images/icon_search_default.png"
                 }
@@ -207,7 +205,7 @@ export default function Header(prop) {
               <Image
                 className="icon_back"
                 src={
-                  activeMenu === "/Home" && showHomeIcon
+                  activeMenu === "/home" && showHomeIcon
                     ? "/images/icon_back_f.png"
                     : "/images/icon_back_default.png"
                 }
@@ -220,7 +218,7 @@ export default function Header(prop) {
           <div className="relative w-7 h-7 sm:hidden">
             <Image
               src={
-                activeMenu === "/Home" && showHomeIcon
+                activeMenu === "/home" && showHomeIcon
                   ? "/images/icon_menu_f.png"
                   : "/images/icon_menu.png"
               }

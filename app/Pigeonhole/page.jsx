@@ -43,7 +43,7 @@ const Pigeonhole = () => {
 
   // 跳转到详情页面
   const toDetailPage = (id) => {
-    router.push(`/ArticleDetail?id=${id}`);
+    router.push(`/articleDetail?id=${id}`);
   };
 
   // 处理时间格式

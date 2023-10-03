@@ -115,7 +115,7 @@ export default function Article() {
 
   // 跳转到详情页面
   const toDetailPage = (id) => {
-    router.push(`/ArticleDetail?id=${id}`);
+    router.push(`/articleDetail?id=${id}`);
   };
 
   return (
