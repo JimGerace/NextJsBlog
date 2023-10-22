@@ -30,7 +30,7 @@ export async function GET() {
             : articlelist[i]._count.sort;
       }
     } else {
-      map[articlelist[i].sort] = articlelist[i]._count.sort;
+      map[articlelist[i].sort] += articlelist[i]._count.sort;
     }
   }
 
