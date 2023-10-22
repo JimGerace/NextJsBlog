@@ -121,7 +121,7 @@ export default function Header(prop) {
   };
 
   return (
-    <div className="fixed inset-0 h-14 z-30 nav_bar">
+    <div className="fixed w-full inset-0 h-14 z-30 nav_bar">
       <div
         className={
           (activeMenu !== "/home" ? "border-b-1 " : "") +

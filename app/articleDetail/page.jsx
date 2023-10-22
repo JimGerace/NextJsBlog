@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import remarkToc from "remark-toc";
+
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { ArticleList } from "@/network/index";
 import { useSearchParams } from "next/navigation";
@@ -17,8 +21,15 @@ const ArticleDetail = () => {
   const searchParams = useSearchParams();
   const [showType, setShowType] = useState("");
   const [detail, setDetail] = useState({});
+  const [showNav, setShowNav] = useState(false);
 
   useEffect(() => {
+    let reg = /Mobile|mobile/gi;
+    if (reg.test(window.navigator.userAgent)) {
+      setShowNav(false);
+    } else {
+      setShowNav(true);
+    }
     getDetailInfo();
   }, []);
 
@@ -83,8 +94,8 @@ const ArticleDetail = () => {
 
           <ReactMarkdown
             className="mt-4 pb-2"
-            remarkPlugins={[gfm]}
-            rehypePlugins={rehypeRaw}
+            remarkPlugins={[gfm, remarkMath, remarkToc]}
+            rehypePlugins={[rehypeRaw, rehypeKatex]}
             children={detail.content}
             components={{
               code({ inline, className, children, ...props }) {
@@ -117,9 +128,11 @@ const ArticleDetail = () => {
           ></ReactMarkdown>
         </div>
 
-        <div className="hidden fixed top-20 right-4 w-1/4 px-4 border-1 rounded-md shadow-lg text-base sm:block">
-          <MarkdownNav content={detail.content} />
-        </div>
+        {showNav && (
+          <div className="hidden fixed top-20 right-4 w-1/4 px-4 border-1 rounded-md shadow-lg text-base sm:block">
+            <MarkdownNav content={detail.content} />
+          </div>
+        )}
 
         {showType === "noData" && <Empty />}
 
