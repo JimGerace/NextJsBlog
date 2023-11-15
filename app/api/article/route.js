@@ -3,9 +3,10 @@ import { NextResponse } from "next/server";
 import { formDate } from "@/utils/tools";
 
 async function getArticleMany(name, sort, page) {
+  console.log(page, "page");
   const result = await prisma.articleList.findMany({
-    skip: page - 1,
-    take: 10,
+    skip: (page - 1) * 5,
+    take: 5,
     select: {
       id: true,
       name: true,

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const Pagination = (props) => {
-  const pageSize = 10;
+  const pageSize = 5;
   const maxPageCount = 5;
   const { total, page, changeCurrentPage } = props;
   const [lastPage, setLastPage] = useState(0);
