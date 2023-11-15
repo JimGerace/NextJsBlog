@@ -170,7 +170,7 @@ export default function Article() {
             文章分类
           </div>
 
-          <div className="w-full flex items-center gap-x-4 pt-2">
+          <div className="w-full flex items-center flex-wrap gap-x-4 pt-2">
             <div
               onClick={() => setSort("全部")}
               className={
@@ -178,7 +178,7 @@ export default function Article() {
                 "flex text-404040 cursor-pointer hover:text-primary"
               }
             >
-              <span className="text-base">全部</span>
+              <span className="text-base whitespace-nowrap">全部</span>
             </div>
             {Object.keys(sortList).map((key, index) => {
               return (
@@ -190,7 +190,7 @@ export default function Article() {
                   }
                   key={index}
                 >
-                  <span className="text-base">{key}</span>
+                  <span className="text-base whitespace-nowrap">{key}</span>
                   {sortList[key] != 0 && (
                     <span className="text-xs">{sortList[key]}</span>
                   )}
