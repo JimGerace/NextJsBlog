@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 import { formDate } from "@/utils/tools";
 
 async function getArticleMany(name, sort, page) {
-  console.log(page, "page");
   const result = await prisma.articleList.findMany({
     skip: (page - 1) * 5,
     take: 5,
@@ -56,11 +55,20 @@ export async function GET(req) {
   switch (type) {
     case "many": {
       const result = await getArticleMany(name, sort, page);
-      const total = await prisma.articleList.count();
+      const totalResult = await prisma.articleList.findMany({
+        where: {
+          name: {
+            contains: name,
+          },
+          sort: {
+            contains: sort,
+          },
+        },
+      });
       return NextResponse.json({
         code: 200,
         data: result,
-        total: total,
+        total: totalResult.length,
       });
     }
     case "Pigeonhole": {
