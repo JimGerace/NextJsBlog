@@ -11,9 +11,9 @@ import Link from "next/link";
 export default function Article() {
   const searchParams = useSearchParams();
   const requestRef = useRef(true);
+  const currentPage = useRef(1);
   const [showType, setShowType] = useState("");
   const [article, setArticle] = useState([]);
-  const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [sort, setSort] = useState("全部");
   const [sortList, setSortList] = useState({});
@@ -23,18 +23,20 @@ export default function Article() {
   }, [searchParams]);
 
   useEffect(() => {
-    !requestRef.current && getArticleList();
-  }, [sort, page]);
+    if (!requestRef.current) {
+      currentPage.current = 1;
+      getArticleList();
+    }
+  }, [sort]);
 
   // 初始化数据
   const init = () => {
     Promise.all([getSortList(), articleInterFace()])
       .then((res) => {
         if (res.length) {
-          let resSort = res[0];
+          const [resSort, resArticle] = res;
           setSortList(resSort.data);
 
-          let resArticle = res[1];
           let list = resArticle.data.map((item) => {
             return {
               ...item,
@@ -62,7 +64,7 @@ export default function Article() {
   const articleInterFace = () => {
     const data = {
       name: window.sessionStorage.getItem("searchKey") || null,
-      page,
+      page: currentPage.current,
       sort: sort === "全部" ? null : sort,
       type: "many",
     };
@@ -110,7 +112,8 @@ export default function Article() {
 
   // 切换当前页码
   const changeCurrentPage = (val) => {
-    setPage(val);
+    currentPage.current = val;
+    getArticleList();
   };
 
   return (
@@ -156,7 +159,7 @@ export default function Article() {
 
               <Pagination
                 total={total}
-                page={page}
+                page={currentPage}
                 changeCurrentPage={changeCurrentPage}
               />
             </>

@@ -33,10 +33,10 @@ const Pagination = (props) => {
   return (
     <div className="w-full py-10 flex items-center justify-center">
       <button
-        disabled={page == 1}
+        disabled={page.current == 1}
         onMouseEnter={() => setPreIcon("/images/icon_pre_active.png")}
         onMouseOut={() => setPreIcon("/images/icon_pre_default.png")}
-        onClick={() => changeCurrentPage(page - 1)}
+        onClick={() => changeCurrentPage(page.current - 1)}
       >
         <Image src={preIcon} width={15} height={15} alt="" />
       </button>
@@ -45,7 +45,7 @@ const Pagination = (props) => {
           <div
             onClick={() => changeCurrentPage(item)}
             className={
-              (page == item ? "text-primary " : "") +
+              (page.current == item ? "text-primary " : "") +
               "w-6 h-6 mx-2 leading-6 text-lg text-center rounded-50% cursor-pointer hover:text-primary"
             }
             key={index}
@@ -68,12 +68,12 @@ const Pagination = (props) => {
         </>
       )}
       <button
-        disabled={page >= lastPage}
+        disabled={page.current >= lastPage}
         onMouseEnter={() =>
-          page < lastPage && setNextIcon("/images/icon_next_active.png")
+          page.current < lastPage && setNextIcon("/images/icon_next_active.png")
         }
         onMouseOut={() => setNextIcon("/images/icon_next_default.png")}
-        onClick={() => changeCurrentPage(page + 1)}
+        onClick={() => changeCurrentPage(page.current + 1)}
       >
         <Image src={nextIcon} width={15} height={15} alt="" />
       </button>
