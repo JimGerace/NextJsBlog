@@ -143,6 +143,7 @@ export default function Header(prop) {
             {menu.map((item, index) => {
               return (
                 <Link
+                  prefetch={false}
                   href={item.value}
                   key={index}
                   className={
@@ -287,6 +288,7 @@ export default function Header(prop) {
           {menu.map((item, index) => {
             return (
               <Link
+                prefetch={false}
                 href={item.value}
                 className={
                   (item.value === activeMenu ? "bg-f2f2f2" : "") +

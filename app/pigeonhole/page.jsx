@@ -76,6 +76,7 @@ const Pigeonhole = () => {
                 {item.list.map((opt, optIndex) => {
                   return (
                     <Link
+                      prefetch={false}
                       href={"/articleDetail?id=" + opt.id}
                       className="w-full flex items-center py-2 cursor-pointer transition-all duration-500 hover:text-primary hover:translate-x-4"
                       key={optIndex}

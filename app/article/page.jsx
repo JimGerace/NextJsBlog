@@ -126,6 +126,7 @@ export default function Article() {
                 return (
                   <div className="w-full pt-12 pb-4 border-b-1" key={index}>
                     <Link
+                      prefetch={false}
                       className="max-w-full inline-block overflow-hidden text-ellipsis whitespace-nowrap text-xl text-404040 cursor-pointer hover:text-primary"
                       href={"/articleDetail?id=" + item.id}
                     >
