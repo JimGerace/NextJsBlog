@@ -144,6 +144,7 @@ export default function Header(prop) {
               return (
                 <Link
                   prefetch={false}
+                  shallow={true}
                   href={item.value}
                   key={index}
                   className={
@@ -289,6 +290,7 @@ export default function Header(prop) {
             return (
               <Link
                 prefetch={false}
+                shallow={true}
                 href={item.value}
                 className={
                   (item.value === activeMenu ? "bg-f2f2f2" : "") +
