@@ -34,6 +34,7 @@ export default function RootLayout({ children }) {
       <title>JimGerace Blog JS</title>
       <meta name="keywords" content="JimGerace, 博客" />
       <meta description="JimGerace Blog" content="Blog" />
+      <meta name="referrer" content="no-referrer" />
       <body>
         <Toaster />
         <MenuHeader changeBackTop={changeBackTop} />
